@@ -11,10 +11,7 @@ export default defineConfig({
                 target: 'https://scholarpath-myhe.onrender.com',
                 changeOrigin: true
             },
-            '/uploads': {
-                target: 'http://127.0.0.1:3000',
-                changeOrigin: true
-            }
+          
         }
     }
 })
