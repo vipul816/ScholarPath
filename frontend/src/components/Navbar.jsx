@@ -3,7 +3,7 @@ import { useAuth } from '../context/AuthContext';
 import { LogOut, Zap, Home } from 'lucide-react';
 import ProfileIcon from './ProfileIcon';
 import ThemeToggle from './ThemeToggle';
-import ScholarPathLogo from './ScholarPathLogo';
+import ScholarPathLogo from './ScholarPathlogo';
 
 const Navbar = () => {
     const { user, logout, isInstructor, isStudent, isInstitute } = useAuth();
