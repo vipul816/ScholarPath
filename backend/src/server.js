@@ -59,8 +59,8 @@ app.use(express.urlencoded({ extended: true }));
 
 // Express session and Passport middleware
 app.use(session({
-    secret: process.env.SESSION_SECRET || 'scholarpath_secret_key',
-    resave: false,
+    secret: process.env.SESSION_SECRET || 'scholarpath_secret_key',//will be changed in production
+    resave: false,                                          
     saveUninitialized: false,
 }));
 app.use(passport.initialize());
@@ -95,7 +95,7 @@ app.use((req, res, next) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/courses', courseRoutes);
 app.use('/api/classes', classRoutes);
-app.use('/api/classes', classNotesRoutes);
+app.use('/api/classNotes', classNotesRoutes);
 app.use('/api/materials', materialRoutes);
 app.use('/api/videos', videoRoutes);
 app.use('/api/assignments', assignmentRoutes);
@@ -164,7 +164,7 @@ const startServer = async () => {
         const dbConnected = await connectDB();
 
         if (!dbConnected) {
-            console.error('❌ Failed to connect to database. Server not started.');
+            console.error('Failed to connect to database. Server not started.');
             process.exit(1);
         }
 
@@ -189,11 +189,11 @@ const startServer = async () => {
                     httpServer.listen(port);
                 });
 
-                console.log('\n🚀 ═══════════════════════════════════════════════');
-                console.log(`🎓 ScholarPath Backend Server`);
-                console.log(`📡 Server running on: http://localhost:${port}`);
-                console.log(`🔌 Socket.io ready for real-time connections`);
-                console.log(`💾 Database: MySQL (${process.env.DB_NAME || 'learnsphere'})`);
+                console.log('\n ═══════════════════════════════════════════════');
+                console.log(`ScholarPath Backend Server`);
+                console.log(`Server running on: http://localhost:${port}`);
+                console.log(`Socket.io ready for real-time connections`);
+                console.log(`Database: MySQL (${process.env.DB_NAME || 'learnsphere'})`);
                 console.log('═══════════════════════════════════════════════\n');
                 return;
             } catch (err) {
@@ -209,10 +209,10 @@ const startServer = async () => {
             }
         }
 
-        console.error(`❌ Failed to bind to a port after ${maxAttempts} attempts. Exiting.`);
+        console.error(`~~Failed to bind to a port after ${maxAttempts} attempts. Exiting.`);
         process.exit(1);
     } catch (error) {
-        console.error('❌ Failed to start server:', error);
+        console.error('~~Failed to start server:', error);
         process.exit(1);
     }
 };

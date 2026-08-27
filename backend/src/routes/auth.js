@@ -53,13 +53,13 @@ const uploadAvatar = multer({
         else cb(new Error('Only JPG/JPEG/PNG avatars allowed'));
     }
 });
-
+// defining functions till here----next are routes/endpoints
 // @route   POST /api/auth/signup
 // @desc    Register new user
 // @access  Public
 router.post('/signup', upload.single('resume'), [
     body('name').trim().isLength({ min: 2 }).withMessage('Name must be at least 2 characters'),
-    body('email').isEmail().withMessage('Please enter a valid email'),
+    body('email').isEmail().withMessage('Please enter a valid email-id'),
     body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters'),
     body('role').isIn(['student', 'instructor']).withMessage('Role must be student or instructor')
 ], async (req, res) => {
